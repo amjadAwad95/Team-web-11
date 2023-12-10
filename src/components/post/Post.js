@@ -12,12 +12,12 @@ const Post = () => {
                             />
                             <div style={{ lineHeight: "0" }}>
                                 <h5 style={{ float: "left", clear: "both" }}>marcuse20
-                                    <span style={{ fontWeight: "lighter", fontSize: "15px", paddingLeft: "10px" }}> . 2h</span></h5>
-                                <p style={{ float: "left", clear: "both", fontWeight: "lighter" }}>web devlopmenthnmf</p>
+                                    <span style={{ color: "#a29b9e", fontSize: "15px", paddingLeft: "10px" }}> . 2h</span></h5>
+                                <p style={{ float: "left", clear: "both", color: "#a29b9e" }}>web devlopmenthnmf</p>
                             </div>
                         </div>
                         <div className="card-body">
-                            <p style={{ textAlign: "left" }}>
+                            <p style={{ textAlign: "left", color: "#a29b9e" }}>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quisquam recusandae eligendi
                                 dolore quod, et doloremque labore! Adipisci quos perspiciatis debitis laborum eum! Incidunt, a voluptatum magnam possimus nam quam?
                             </p>
