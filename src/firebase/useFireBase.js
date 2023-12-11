@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, onSnapshot, QuerySnapshot } from "firebase/firestore";
+import { collection, addDoc, getDocs, deleteDoc, doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { db } from "./firebase"
 
 export const useFireBase = (collectionName) => {
