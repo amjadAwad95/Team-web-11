@@ -3,12 +3,12 @@ import PostAction from "../post_action/PostAction";
 const Post = (props) => {
     return (
         <>
-            <div className="container">
+            <div className="container mx-4">
                 <div className="row justify-content-start">
-                    <div className="col-md-6" style={{ marginBottom: "-40px", marginLeft: "-40px" }}>
+                    <div className="col-md-6" >
                         <section className="mx-auto my-5 mb-1" style={{ maxWidth: '50rem' }}>
-                            <div className="card" style={{ borderRadius: "0", padding: "20px" }}>
-                                <div className="card-head d-flex">
+                            <div className="card" style={{ borderRadius: "0" }}>
+                                <div className="card-head d-flex my-3 mx-3">
                                     <img src={props.profileImage} className="rounded-circle me-3"
                                         style={{ width: "40px", height: "40px" }}
                                     />

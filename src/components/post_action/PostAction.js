@@ -24,7 +24,7 @@ const PostAction = (props) => {
 
     }
     return (
-        <a href="#!" className="btn" style={{ color: color }} onClick={changeOnClick}>
+        <a href="#!" className="btn mt-auto" style={{ color: color }} onClick={changeOnClick}>
             <i className={props.icon} style={{ paddingRight: "5px" }}></i>
             {props.action}({props.counter})
         </a>
