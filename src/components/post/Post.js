@@ -31,7 +31,7 @@ const Post = (props) => {
                                         <div className="d-flex align-items-center">
                                             <PostAction color="#677e92" icon="bi bi-hand-thumbs-up-fill" action="Like" counter={props.like} id={props.id} />
                                             <a href="#!" className="btn" style={{ color: "#677e92 " }}>
-                                                <i className="bi bi-chat-fill" style={{ paddingRight: "5px" }}></i>
+                                                <i className="bi bi-chat-fill" style={{ paddingRight: "5px", fontSize: "14px" }}></i>
                                                 Comments({props.numberComment})
                                             </a>
                                         </div>
