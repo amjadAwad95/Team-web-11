@@ -9,12 +9,16 @@ const Post = (props) => {
                         <section className="mx-auto my-5 mb-1" style={{ maxWidth: '50rem' }}>
                             <div className="card" style={{ borderRadius: "0" }}>
                                 <div className="card-head d-flex my-3 mx-3">
-                                    <img src={props.profileImage} className="rounded-circle me-3"
-                                        style={{ width: "40px", height: "40px" }}
-                                    />
+                                    <div className="d-flex align-items-center">
+                                        <img src={props.profileImage} className="rounded-circle me-3"
+                                            style={{ width: "40px", height: "40px" }}
+                                        />
+                                    </div>
                                     <div style={{ lineHeight: "0" }}>
                                         <h5 style={{ float: "left", clear: "both" }}>{props.name}
-                                            <span style={{ color: "#a29b9e", fontSize: "15px", paddingLeft: "10px" }}> . {props.time}</span></h5>
+                                            <span style={{ color: "#a29b9e", fontSize: "15px" }}>
+                                                <i className="bi bi-dot m-1" style={{ fontSize: "18px" }}></i>
+                                                {props.time}</span></h5>
                                         <p style={{ float: "left", clear: "both", color: "#a29b9e" }}>{props.desc}</p>
                                     </div>
                                 </div>
