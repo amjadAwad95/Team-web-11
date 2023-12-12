@@ -1,6 +1,17 @@
+import { useState } from "react";
 import PostAction from "../post_action/PostAction";
+import Comment from "../comment/Comment";
 
 const Post = (props) => {
+    const [commentShow, setCommentShow] = useState(false);
+    const onClickComment = () => {
+        if (!commentShow) {
+            setCommentShow(true);
+            return true;
+        }
+        setCommentShow(false);
+        return true;
+    }
     return (
         <>
             <div className="container mx-4">
@@ -34,13 +45,14 @@ const Post = (props) => {
                                     <div className="d-flex justify-content-between align-items-center">
                                         <div className="d-flex align-items-center">
                                             <PostAction color="#677e92" icon="bi bi-hand-thumbs-up-fill" action="Like" counter={props.like} id={props.id} />
-                                            <a href="#!" className="btn" style={{ color: "#677e92 " }}>
+                                            <a href="#!" className="btn" style={{ color: "#677e92 " }} onClick={onClickComment}>
                                                 <i className="bi bi-chat-fill" style={{ paddingRight: "5px", fontSize: "14px" }}></i>
                                                 Comments({props.numberComment})
                                             </a>
                                         </div>
                                         <PostAction color="#677e92" icon="bi bi-share-fill" action="Share" counter={props.share} id={props.id} />
                                     </div>
+                                    <Comment isShow={commentShow} />
                                 </div>
                             </div>
                         </section>
