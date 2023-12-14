@@ -18,7 +18,7 @@ const ProfileHeader = () => {
     profilePictureUrl: profilePhoto,
     coverPhotoUrl: coverPhoto,
   });
-
+  const [active, setActive] = useState("Posts")
 
   return (
     <div className="container mx-5">
@@ -45,8 +45,8 @@ const ProfileHeader = () => {
                 </div>
                 <div>
 
-                  <button className="btn" style={{ background: "#fae8eb", color: "#dc3545" }} >
-                    <i className="bi bi-pencil-fill mx-1" style={{ color: "#dc3545" }}></i>
+                  <button className="btn ml-auto" style={{ background: "#fae8eb", color: "#dc3545" }} >
+                    <i className="bi bi-pencil-fill mx-2" style={{ color: "#dc3545" }}></i>
                     Edit Profile
                   </button>
                   <button className="btn mx-2" style={{ background: "#eef0f2" }}>
@@ -76,16 +76,17 @@ const ProfileHeader = () => {
 
               <div className="card-footer mx-3 ">
                 <ul className="nav " >
-                  <li><a className="active">Posts</a></li>
-                  <li><a >About</a></li>
+                  <li><a className={active == "Posts" ? "active" : "non-active"} onClick={() => { setActive("Posts") }}>Posts</a></li>
+                  <li><a className={active == "About" ? "active" : "non-active"} onClick={() => { setActive("About") }}>About</a></li>
 
-                  <li> <a >Connections
+                  <li><a className={active == "Connections" ? "active" : "non-active"} onClick={() => { setActive("Connections") }}>Connections
                     <span className="connection-count">230</span></a></li>
-                    <li><a >Media</a></li>
-                    <li><a >Videos</a></li>
-                    <li><a >Events</a></li>
-                    <li><a >Activity</a></li>
-                
+
+                  <li><a className={active == "Media" ? "active" : "non-active"} onClick={() => { setActive("Media") }}>Media</a></li>
+                  <li><a className={active == "Videos" ? "active" : "non-active"} onClick={() => { setActive("Videos") }}>Videos</a></li>
+                  <li><a className={active == "Events" ? "active" : "non-active"} onClick={() => { setActive("Events") }}>Events</a></li>
+                  <li><a className={active == "Activity" ? "active" : "non-active"} onClick={() => { setActive("Activity") }}>Activity</a></li>
+
                 </ul>
               </div>
 

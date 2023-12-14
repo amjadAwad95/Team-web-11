@@ -86,27 +86,25 @@
   width: 0;
 
 }
-/*
-.clicked-button {
+
+.active {
   border-bottom: solid;
   border-color: blue;
   color: blue;
 
 }
 
-.non-clicked-button {
+.non-active {
   border: none;
-
   color: white;
 }
-*/
-.card-footer .nav li a.active,
-.card-footer .nav li a:hover {
-  color: blue;
+
+
+
+a:hover {
+  cursor: pointer;
 }
 
-.card-footer .nav li a.active:after,
-.card-footer .nav li a:hover:after {
-  width: 100%;
-  background-color: blue;
-}  
+.card-footer .nav li a.active{
+  color: blue;
+}
