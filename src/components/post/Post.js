@@ -2,6 +2,7 @@ import { useState } from "react";
 import PostAction from "../post_action/PostAction";
 import Comment from "../comment/Comment";
 
+
 const Post = (props) => {
     const [commentShow, setCommentShow] = useState(false);
     const onClickComment = () => {
