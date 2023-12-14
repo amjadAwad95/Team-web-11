@@ -1,0 +1,15 @@
+// src/components/ClickableImage.js
+import React from 'react';
+
+const ClickableImage = ({ imagePath, onClick }) => {
+  return (
+    <img
+      src={imagePath}
+      alt="Profile"
+      style={{ cursor: 'pointer', border: '2px solid #fff', borderRadius: '50%' }}
+      onClick={onClick}
+    />
+  );
+};
+
+export default ClickableImage;

@@ -1,0 +1,13 @@
+// src/components/UserProfile.js
+import React from 'react';
+
+const UserProfile = () => {
+  return (
+    <div>
+      <h2>User Profile</h2>
+      {/* Add any additional content you want to display in the user profile */}
+    </div>
+  );
+};
+
+export default UserProfile;

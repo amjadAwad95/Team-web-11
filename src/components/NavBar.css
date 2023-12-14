@@ -1,0 +1,11 @@
+/* NavBar.css */
+.profile-badge {
+  position: relative;
+  margin-left: 10px;
+}
+
+.profile-badge .badge {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+}
