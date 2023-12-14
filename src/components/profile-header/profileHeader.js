@@ -21,78 +21,97 @@ const ProfileHeader = () => {
   const [active, setActive] = useState("Posts")
 
   return (
-    <div className="container mx-5">
+    <div className="container mx-4">
       <div className="row justify-content-start">
-        <div className="call-md-8">
-          <section className="mx-auto">
-            <div className="card">
-              <div className="card-head d-flex">
-                <div className="background-image" style={{ backgroundImage: `url(${userData.coverPhotoUrl})` }}></div>
-              </div>
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="d-flex">
-                  <div>
-                    <img src={userData.profilePictureUrl} alt="Profile" className="user-image mx-4" style={{ width: "150px", height: "150px" }} />
-                  </div>
-                  <div style={{ lineHeight: "25px" }}>
-                    <p className="user-name"> {userData.username}</p>
-                    <span>{userData.connections} connections</span>
-                  </div>
-                  {userData.isVerified && (
-                    <i style={{ color: "green" }} className="bi bi-patch-check-fill mx-1"></i>
-                  )}
-
-                </div>
+        <div className="col-md-20">
+          <div className="card mx-4">
+            <div
+              className="background-image"
+              style={{ backgroundImage: `url(${userData.coverPhotoUrl})` }}
+            ></div>
+            <div className="card-body py-0">
+              <div className="d-sm-flex align-items-start text-center text-sm-start">
                 <div>
+                  <div className="avatar avatar-xxl mt-n5 mb-3" style={{ marginTop: "-60px" }}>
+                    <img
+                      className="avatar-img rounded-circle border border-white border-3"
+                      src={userData.profilePictureUrl}
+                      alt=""
+                      style={{ width: "150px", height: "150px" }}
+                    />
+                  </div>
+                </div>
+                <div className="ms-sm-4 mt-sm-3">
+                  <h1 className="mb-0 h5">
+                    {userData.username}{" "}
+                    {userData.isVerified && (
+                      <i className="bi bi-patch-check-fill text-success small" />
+                    )}
+                  </h1>
+                  <p>{userData.connections} connections</p>
+                </div>
+                <div className="d-flex mt-3 justify-content-center ms-sm-auto">
+                  <button
+                    className="btn btn-danger-soft me-2"
+                    type="button"
+                    style={{ background: "#fae8eb", color: "#dc3545" }}
+                  >
+                    <i className="bi bi-pencil-fill pe-1" /> Edit profile
+                  </button>
+                  <div className="dropdown">
+                    <button
+                      className="icon-md btn btn-light"
+                      type="button"
+                      id="profileAction2"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      <i className="bi bi-three-dots" />
+                    </button>
+                    <ul
+                      className="dropdown-menu dropdown-menu-end"
+                      aria-labelledby="profileAction2"
+                    >
 
-                  <button className="btn ml-auto" style={{ background: "#fae8eb", color: "#dc3545" }} >
-                    <i className="bi bi-pencil-fill mx-2" style={{ color: "#dc3545" }}></i>
-                    Edit Profile
-                  </button>
-                  <button className="btn mx-2" style={{ background: "#eef0f2" }}>
-                    <i className="bi bi-three-dots" variant="light" >
-                    </i>
-                  </button>
+                    </ul>
+                  </div>
                 </div>
               </div>
-              < div className="card-body me-auto">
-
-                <i className="bi bi-briefcase mx-3"></i>
-                {userData.work}
-
-
-
-                <i className="bi bi-geo-alt-fill mx-3" ></i>
-                {userData.location}
-
-
-                <i className="bi bi-calendar2-plus mx-3"></i>
-                Joined on {userData.joinedDate}
-
-
-              </div>
-              <div>
-              </div>
-
-              <div className="card-footer mx-3 ">
-                <ul className="nav " >
-                  <li><a className={active == "Posts" ? "active" : "non-active"} onClick={() => { setActive("Posts") }}>Posts</a></li>
-                  <li><a className={active == "About" ? "active" : "non-active"} onClick={() => { setActive("About") }}>About</a></li>
-
-                  <li><a className={active == "Connections" ? "active" : "non-active"} onClick={() => { setActive("Connections") }}>Connections
-                    <span className="connection-count">230</span></a></li>
-
-                  <li><a className={active == "Media" ? "active" : "non-active"} onClick={() => { setActive("Media") }}>Media</a></li>
-                  <li><a className={active == "Videos" ? "active" : "non-active"} onClick={() => { setActive("Videos") }}>Videos</a></li>
-                  <li><a className={active == "Events" ? "active" : "non-active"} onClick={() => { setActive("Events") }}>Events</a></li>
-                  <li><a className={active == "Activity" ? "active" : "non-active"} onClick={() => { setActive("Activity") }}>Activity</a></li>
-
-                </ul>
-              </div>
-
-
+              <ul className="list-inline mb-0 text-center text-sm-start mt-3 mt-sm-0 ">
+                <li className="list-inline-item">
+                  <i className="bi bi-briefcase me-1" /> {userData.work}
+                </li>
+                <li className="list-inline-item">
+                  <i className="bi bi-geo-alt me-1" /> {userData.location}
+                </li>
+                <li className="list-inline-item">
+                  <i className="bi bi-calendar2-plus me-1" /> Joined on {userData.joinedDate}
+                </li>
+              </ul>
             </div>
-          </section>
+            <div className="card-footer mt-3 pt-2 pb-0 mx-3">
+              <ul className="nav nav-bottom-line align-items-center justify-content-center justify-content-md-start mb-0 border-0">
+                <li className="nav-item">
+                  <a
+                    className={`nav-link ${active === "Posts" ? "active" : "non-active"}`}
+                    onClick={() => setActive("Posts")}
+                  >
+                    Posts
+                  </a>
+                </li>
+                <li><a className={active == "About" ? "active" : "non-active"} onClick={() => { setActive("About") }}>About</a></li>
+
+                <li><a className={active == "Connections" ? "active" : "non-active"} onClick={() => { setActive("Connections") }}>Connections
+                  <span className="connection-count">230</span></a></li>
+
+                <li><a className={active == "Media" ? "active" : "non-active"} onClick={() => { setActive("Media") }}>Media</a></li>
+                <li><a className={active == "Videos" ? "active" : "non-active"} onClick={() => { setActive("Videos") }}>Videos</a></li>
+                <li><a className={active == "Events" ? "active" : "non-active"} onClick={() => { setActive("Events") }}>Events</a></li>
+                <li><a className={active == "Activity" ? "active" : "non-active"} onClick={() => { setActive("Activity") }}>Activity</a></li>
+
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
