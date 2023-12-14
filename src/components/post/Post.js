@@ -17,7 +17,7 @@ const Post = (props) => {
         <>
             <div className="container mx-4">
                 <div className="row justify-content-start">
-                    <div className="col-md-6" >
+                    <div className="col-md-8" >
                         <section className="mx-auto my-5 mb-1" style={{ maxWidth: '50rem' }}>
                             <div className="card" style={{ borderRadius: "0" }}>
                                 <div className="card-head d-flex my-3 mx-3">
