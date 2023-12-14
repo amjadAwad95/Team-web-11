@@ -1,4 +1,9 @@
-
+.custom-friend-card-container {
+    border-radius: 4px;
+    border: 1px solid #dcdcdc;
+    max-height: auto;
+  }
+  
 
 
   
