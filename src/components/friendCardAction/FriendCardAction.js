@@ -1,28 +1,21 @@
-import Posts from '../Posts';
-import '../friendCardAction/FriendCardAction.css';
+import '../friendCardAction/FriendCardAction.css'
 import FriendCard from '../friendcard/FriendCard';
-import Post from '../post/Post';
-
+//import Card from './components/FriendList/Card';
+import Posts from '../Posts';
 function FriendCardAction() {
-  return (
-    <div className="container">
-      <div className="row">
-        <div className="col-md-8  text-white text-center  ">
-         <Post/>
-        </div>
-        <div className="col-md-4 d-flex text-center p-3 ">
-          <div className="allCard mx-4 p-2  custom-friend-card-container">
-            <FriendCard />
-          </div>
-        </div>
+  return ( 
+  
+
+      <div  className=" container  d-flex text-center mx-5  " style={{marginTop:"4px" ,maxHeight:"auto",marginRight:"50px"}}>
+     <div className="item bordercard  mx-5 p-5 " >
+     <FriendCard/>
       </div>
-    </div>
+      </div>
+  
   );
 }
 
 export default FriendCardAction;
-
-
 
 
 
@@ -46,5 +39,10 @@ function FriendCardAction() {
   );
 }
 
+  <div id="container" className="col-md-3 d-flex text-center p-2" style={{borderRadius:"4px",marginTop:"40px",maxHeight:"auto"}}>
+      <div className="allCard mx-2 p-2 "style={{ borderRadius:"4px",border: "1px solid #dcdcdc" }}>
+      <FriendCard/>
+      </div>
+      </div>
 export default FriendCardAction;
 */

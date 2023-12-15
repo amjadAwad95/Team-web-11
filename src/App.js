@@ -4,16 +4,14 @@ import Posts from './components/Posts';
 import FriendCardAction from './components/friendCardAction/FriendCardAction';
 import FriendCard from './components/friendcard/FriendCard';
 import Post from './components/post/Post';
+import ProfileHeader from './components/profile-header/profileHeader';
 function App() {
   return(
-   <div>
-    
-      <FriendCardAction/>
-      <Posts/>
-     
-
-      
-    </div>
+    <div> 
+   <ProfileHeader/>
+   <FriendCardAction/>
+   <Posts/>
+   </div>
   
   );
 }
