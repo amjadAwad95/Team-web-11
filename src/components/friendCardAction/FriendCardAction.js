@@ -3,15 +3,15 @@ import FriendCard from '../friendcard/FriendCard';
 //import Card from './components/FriendList/Card';
 import Posts from '../Posts';
 function FriendCardAction() {
-  return ( 
-  
+  return (
 
-      <div  className=" container  d-flex text-center mx-5  " style={{marginTop:"4px" ,maxHeight:"auto",marginRight:"50px"}}>
-     <div className="item bordercard  mx-5 p-5 " >
-     <FriendCard/>
+
+    <div className=" container text-center ">
+      <div className="item bordercard mx-1" >
+        <FriendCard />
       </div>
-      </div>
-  
+    </div>
+
   );
 }
 
