@@ -7,7 +7,7 @@ function App() {
   return (
     <div className='container-fluid'>
       <div className='row my-3'>
-        <div className='col-md-8'>
+        <div className='col text-center'>
           <ProfileHeader />
           <Posts />
         </div>

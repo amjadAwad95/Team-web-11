@@ -18,8 +18,7 @@ const ProfileHeader = () => {
   const [active, setActive] = useState("Posts")
 
   return (
-    <div className="container mx-4">
-      <div className="card mx-4">
+      <div className="card">
         <div
           className="background-image"
           style={{ backgroundImage: `url(${userData.coverPhotoUrl})` }}
@@ -105,7 +104,6 @@ const ProfileHeader = () => {
           </ul>
         </div>
       </div>
-    </div>
   );
 };
 
