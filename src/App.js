@@ -2,17 +2,20 @@ import logo from './logo.svg';
 import './App.css';
 import Posts from './components/Posts';
 import FriendCardAction from './components/friendCardAction/FriendCardAction';
-import FriendCard from './components/friendcard/FriendCard';
-import Post from './components/post/Post';
 import ProfileHeader from './components/profile-header/profileHeader';
 function App() {
-  return(
-    <div> 
-   <ProfileHeader/>
-   <FriendCardAction/>
-   <Posts/>
-   </div>
-  
+  return (
+    <div className='container-fluid'>
+      <div className='row my-3'>
+        <div className='col-md-8'>
+          <ProfileHeader />
+          <Posts />
+        </div>
+        <div className='col-md-4'>
+          <FriendCardAction />
+        </div>
+      </div>
+    </div>
   );
 }
 

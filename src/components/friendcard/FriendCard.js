@@ -27,9 +27,9 @@ const FriendCard = ({ removeFriend, profilePicture, name, mutualConnections, has
 
   return (
 
-    <div className="card  " style={{ width: "350px", height: "auto" }}>
+    <div className="card" style={{ width: "350px", height: "auto" }}>
       <div className="friend-list-header d-flex justify-content-between align-items-center m-1 mx-1">
-        <div className="d-flex align-items-center  mx-2" style={{ fontSize: '14px' }}>
+        <div className="d-flex align-items-center  mx-1" style={{ fontSize: '14px' }}>
           <h4 style={{ fontSize: '20px' }}>Friends</h4>
           <button className="connections-button">{friends.length}</button>
         </div>
@@ -38,14 +38,14 @@ const FriendCard = ({ removeFriend, profilePicture, name, mutualConnections, has
         </button>
       </div>
 
-      <Row xs={2} md={2} lg={2} className=" g-3  ">
+      <Row xs={2} md={2} lg={2}>
         {friends.slice(0, visibleFriends).map((friend) => (
           <Col key={friend.id}>
-            <div className="friend-list-item m-1 ">
-              <div className="card mx-1" style={{ width: "auto", height: "auto" }}>
-                <div className="container mx-1 ">
+            <div className="friend-list-item mb-2">
+              <div className="card mx-1" >
+                <div className="container mx-1">
                   <div className="row">
-                    <div className="col-2  m-2">
+                    <div className="col-2  m-1">
                       <div className={`friend-card ${hasStory ? 'has-story' : ''}`}>
                         <div className="profile-picture-container align-items-center">
                           <img
