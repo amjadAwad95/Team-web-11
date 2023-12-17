@@ -1,8 +1,10 @@
+
 import logo from './logo.svg';
 import './App.css';
 import Posts from './components/Posts';
 import FriendCardAction from './components/friendCardAction/FriendCardAction';
 import ProfileHeader from './components/profile-header/profileHeader';
+import About from "./About";
 function App() {
   return (
     <div className='container-fluid'>
@@ -12,6 +14,7 @@ function App() {
           <Posts />
         </div>
         <div className='col-md-4'>
+         <About />
           <FriendCardAction />
         </div>
       </div>
