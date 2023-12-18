@@ -6,7 +6,7 @@ function FriendCardAction() {
   return (
 
 
-    <div className=" container text-center ">
+    <div className=" container text-center p-0">
       <div className="item bordercard mx-1" >
         <FriendCard />
       </div>

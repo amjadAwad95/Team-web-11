@@ -2,17 +2,16 @@ import React from "react";
 import { useFireBase } from "../../firebase/useFireBase";
 
 export default function Photos() {
-  const { data } = useFireBase("photos");
-  
+  const { data } = useFireBase("photos");  
+
   const firstFivePhotos = data.slice(0, 5);
 
   return (
     <div
       style={{
         width: "400px",
-        maxWidth: "100%",
       }}
-      className="rounded-3 shadow-sm"
+      className="card m-1 mt-4"
     >
       <div className="container text-center p-4">
         <div className="row mb-3">
