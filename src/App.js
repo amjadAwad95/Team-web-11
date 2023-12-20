@@ -19,9 +19,8 @@ function App() {
         <div className="col-md-4">
           <About />
           <Experience />
-          <FriendCardAction />
           <Photos />
-
+          <FriendCardAction />
         </div>
       </div>
     </div>

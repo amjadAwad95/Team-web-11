@@ -26,7 +26,7 @@ const FriendCard = ({ removeFriend, profilePicture, name, mutualConnections, has
   };
 
   return (
-    <div className="card p-3" style={{ width: "400px", height: "auto" }}>
+    <div className="card p-3 my-4" style={{ width: "400px", height: "auto" }}>
       <div className="friend-list-header d-flex justify-content-between align-items-center m-1">
         <div className="d-flex align-items-center  mx-1" style={{ fontSize: '14px' }}>
           <h4 style={{ fontSize: '20px' }}>Friends</h4>
