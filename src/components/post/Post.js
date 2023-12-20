@@ -52,7 +52,7 @@ const Post = (props) => {
                             </div>
                             <PostAction color="#677e92" icon="bi bi-share-fill" action="Share" counter={props.share} id={props.id} />
                         </div>
-                        <Comment isShow={commentShow} name={props.name} profileImage={props.profileImage} setNumberOfComment={setNumberOfComment} />
+                        <Comment isShow={commentShow} name={props.name} profileImage={props.profileImage} setNumberOfComment={setNumberOfComment} postId={props.postId} commentId={props.commentId} />
                     </div>
                 </div>
             </section>

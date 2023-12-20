@@ -3,7 +3,7 @@ import { useFireBase } from "../../firebase/useFireBase";
 
 const Reply = (props) => {
     const { data, updateData } = useFireBase("reply");
-    const replys = data.filter((reply) => { return reply.forTo === props.name })
+    const replys = data.filter((reply) => { return reply.commentId === props.commentId })
     useEffect(() => {
         props.setNumberOfReply(replys.length)
     }, [replys.length])

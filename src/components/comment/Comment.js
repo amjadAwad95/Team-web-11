@@ -5,23 +5,29 @@ import "./Comment.css"
 
 const Comment = (props) => {
     const { data, updateData, addToData } = useFireBase("comment");
-    const comments = data.filter((comment) => { return comment.forTo === props.name })
+    const comments = data.filter((comment) => { return comment.postId === props.postId })
     const [text, setText] = useState("")
+    const [placeholder, setPlaceholder] = useState("Add a comment...")
     const [commentObject, setCommentObject] = useState({
         like: 0,
         time: "0s",
         image: props.profileImage,
         owner: props.name,
         forTo: props.name,
-        text: text
+        text: text,
+        postId: props.postId,
+        commentId: data.length + 1
     })
     useEffect(() => {
         props.setNumberOfComment(comments.length)
-    }, [comments.length])
+        const commentObjectUpdate = { ...commentObject }
+        commentObjectUpdate.commentId = data.length + 1
+        commentObjectUpdate.text = text
+        setCommentObject(commentObjectUpdate)
+    }, [comments.length, data, text])
 
     const [commentAmount, setCommentAmount] = useState(1);
     const [showMore, setShowMore] = useState(true)
-    const [commentOwner, setCommentOwner] = useState("")
     const [numberOfReply, setNumberOfReply] = useState(0);
 
     const handelCommentAmount = () => {
@@ -71,7 +77,7 @@ const Comment = (props) => {
                                                         <textarea className="form-control text-area" id="exampleFormControlTextarea1"
                                                             rows={1}
                                                             cols={55}
-                                                            placeholder="Add a comment..."
+                                                            placeholder={placeholder}
                                                             onChange={(e) => {
                                                                 setText(e.target.value)
                                                                 setCommentObject({ ...commentObject, text: text })
@@ -112,7 +118,7 @@ const Comment = (props) => {
                                                                         <i className="bi bi-dot my-1"></i>
                                                                         <button className="btn action-btn">view {numberOfReply} replies</button>
                                                                     </div>
-                                                                    <Reply name={comment.owner} setNumberOfReply={setNumberOfReply} />
+                                                                    <Reply name={comment.owner} setNumberOfReply={setNumberOfReply} commentId={comment.commentId} />
                                                                 </div>
                                                             </div>
                                                         )
