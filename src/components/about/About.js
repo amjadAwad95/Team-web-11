@@ -4,12 +4,13 @@ const About = () => {
 
   return data.map((about) => {
     return (
-      <div className="col-md-10 mb-4" key={about.id}>
+      
+      <div className="col-md-10 mb-4" style={{width:'100%'}} key={about.id}>
         <div className="p-4 border border-secondary-emphasis rounded-top rounded-bottom ">
           <h5 className=" text-start ">
             <b className="p-2">About</b>
           </h5>
-          <p className="text-secondary small text-start" key={about.id}>
+          <p className="text-secondary small text-start" >
             {about.desc}
           </p>
           <ul className="list-unstyled text-start text-secondary ">
