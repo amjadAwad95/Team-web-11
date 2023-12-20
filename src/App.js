@@ -5,7 +5,7 @@ import ProfileHeader from "./components/profile-header/profileHeader";
 import About from "./components/about/About";
 import Navbar from "./components/navbar/Navbar";
 import Photos from "./components/photosList/photos";
-import { useFireBase } from "./firebase/useFireBase";
+import Experience from "./components/Experience/Experience";
 
 function App() {
   return (
@@ -18,8 +18,10 @@ function App() {
         </div>
         <div className="col-md-4">
           <About />
+          <Experience/>
           <FriendCardAction />
           <Photos />
+
         </div>
       </div>
     </div>
