@@ -5,7 +5,7 @@ import ProfileHeader from "./components/profile-header/profileHeader";
 import About from "./components/about/About";
 import Navbar from "./components/navbar/Navbar";
 import Photos from "./components/photosList/photos";
-import { useFireBase } from "./firebase/useFireBase";
+
 
 function App() {
   return (
