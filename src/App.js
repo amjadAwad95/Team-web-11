@@ -6,6 +6,7 @@ import About from "./components/about/About";
 import Navbar from "./components/navbar/Navbar";
 import Photos from "./components/photosList/photos";
 import Experience from "./components/Experience/Experience";
+
 function App() {
   return (
     <div className="container-fluid">

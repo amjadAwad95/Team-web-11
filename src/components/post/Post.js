@@ -5,6 +5,7 @@ import Comment from "../comment/Comment";
 
 const Post = (props) => {
     const [commentShow, setCommentShow] = useState(false);
+    const [numberOfComment, setNumberOfComment] = useState(0);
     const onClickComment = () => {
         if (!commentShow) {
             setCommentShow(true);
@@ -45,13 +46,13 @@ const Post = (props) => {
                                 <PostAction color="#677e92" icon="bi bi-hand-thumbs-up-fill" action="Like" counter={props.like} id={props.id} />
                                 <a href="#!" className="btn" style={{ color: "#677e92 ", fontSize: "10px" }} onClick={onClickComment}>
                                     <i className="bi bi-chat-fill" style={{ paddingRight: "5px" }}></i>
-                                    Comments({props.numberComment})
+                                    Comments({numberOfComment})
                                 </a>
 
                             </div>
                             <PostAction color="#677e92" icon="bi bi-share-fill" action="Share" counter={props.share} id={props.id} />
                         </div>
-                        <Comment isShow={commentShow} />
+                        <Comment isShow={commentShow} name={props.name} profileImage={props.profileImage} setNumberOfComment={setNumberOfComment} postId={props.postId} commentId={props.commentId} />
                     </div>
                 </div>
             </section>
