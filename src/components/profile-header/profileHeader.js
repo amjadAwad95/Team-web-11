@@ -6,8 +6,6 @@ import { useFireBase } from "../../firebase/useFireBase";
 const ProfileHeader = () => {
   const { data } = useFireBase("Header")
   const [active, setActive] = useState("Posts")
-  console.log(data)
-
 
   return data.map((headerData) => {
     return (
@@ -60,8 +58,8 @@ const ProfileHeader = () => {
                   aria-labelledby="profileAction2"
                 >
 
-                  <li><a className="dropdown-item" href="#"> <i class="bi bi-lock fa-fw pe-2"></i>{headerData.loackProfile}</a></li>
-                  <li> <a className="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>{headerData.settingsButton}</a></li>
+                  <li><a className="dropdown-item" href="#"> <i className="bi bi-lock fa-fw pe-2"></i>{headerData.loackProfile}</a></li>
+                  <li> <a className="dropdown-item" href="#"> <i className="bi bi-gear fa-fw pe-2"></i>{headerData.settingsButton}</a></li>
                 </ul>
               </div>
             </div>
