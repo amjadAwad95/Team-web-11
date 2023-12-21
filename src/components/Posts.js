@@ -19,6 +19,7 @@ const Posts = () => {
                                 numberComment={info.numberComment}
                                 share={info.share}
                                 id={info.id}
+                                postId={info.postId}
                             />
                         </div>
                     )

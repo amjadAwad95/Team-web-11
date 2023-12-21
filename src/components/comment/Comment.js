@@ -1,6 +1,59 @@
+import { useEffect, useState } from "react";
+import { useFireBase } from "../../firebase/useFireBase"
+import Reply from "../reply/Reply";
 import "./Comment.css"
 
 const Comment = (props) => {
+    const { data, updateData, addToData } = useFireBase("comment");
+    const comments = data.filter((comment) => { return comment.postId === props.postId })
+    const [text, setText] = useState("")
+    const [placeholder, setPlaceholder] = useState("Add a comment...")
+    const [commentObject, setCommentObject] = useState({
+        like: 0,
+        time: "0s",
+        image: props.profileImage,
+        owner: props.name,
+        forTo: props.name,
+        text: text,
+        postId: props.postId,
+        commentId: data.length + 1
+    })
+    useEffect(() => {
+        props.setNumberOfComment(comments.length)
+        const commentObjectUpdate = { ...commentObject }
+        commentObjectUpdate.commentId = data.length + 1
+        commentObjectUpdate.text = text
+        setCommentObject(commentObjectUpdate)
+    }, [comments.length, data, text])
+
+    const [commentAmount, setCommentAmount] = useState(1);
+    const [showMore, setShowMore] = useState(true)
+    const [numberOfReply, setNumberOfReply] = useState(0);
+
+    const handelCommentAmount = () => {
+        if (commentAmount < comments.length) {
+            setCommentAmount(commentAmount + 1);
+            setShowMore(true)
+            if (commentAmount === comments.length - 1) {
+                setShowMore(false)
+            }
+            return true;
+        }
+        setShowMore(false)
+        return false;
+    }
+    const handelShowLess = () => {
+        setShowMore(true)
+        setCommentAmount(1);
+    }
+
+    const handelAddComment = (event) => {
+        if (event.key === 'Enter') {
+            addToData(event, commentObject)
+        }
+    }
+
+
     if (props.isShow) {
         return (
             <div>
@@ -15,7 +68,7 @@ const Comment = (props) => {
                                                 <div className="d-flex flex-start">
                                                     <img
                                                         className="rounded-circle shadow-1-strong me-3"
-                                                        src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                        src={props.profileImage}
                                                         alt="avatar"
                                                         width={30}
                                                         height={30}
@@ -24,145 +77,63 @@ const Comment = (props) => {
                                                         <textarea className="form-control text-area" id="exampleFormControlTextarea1"
                                                             rows={1}
                                                             cols={55}
-                                                            placeholder="Add a comment..."
+                                                            placeholder={placeholder}
+                                                            onChange={(e) => {
+                                                                setText(e.target.value)
+                                                                setCommentObject({ ...commentObject, text: text })
+                                                            }}
+                                                            onKeyDown={handelAddComment}
                                                         ></textarea>
                                                     </div>
                                                 </div>
-                                                <div className="d-flex flex-start">
-                                                    <img
-                                                        className="rounded-circle shadow-1-strong me-3"
-                                                        src="https://images.unsplash.com/photo-1511367461989-f85a21fda167?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                                        alt="avatar"
-                                                        width={30}
-                                                        height={30}
-                                                    />
-                                                    <div className="flex-grow-1 flex-shrink-1">
-                                                        <div className="comment-body">
-                                                            <div className="d-flex justify-content-between">
-                                                                <p className="mb-1 user-name">
-                                                                    Lori
-                                                                </p>
-                                                                <span className="small comment-text">2 hr</span>
-                                                            </div>
-                                                            <p className="small comment-text">
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius
-                                                                quisquam recusandae eligendi dolore quod, et doloremque labore!
-                                                                Adipisci quos perspiciatis debitis laborum eum! Incidunt, a voluptatum
-                                                                magnam possimus nam quam?
-                                                            </p>
-                                                        </div>
-                                                        <div className="d-flex justify-content-start">
-                                                            <button className="btn action-btn">Like(3)</button>
-                                                            <i className="bi bi-dot my-1"></i>
-                                                            <button className="btn action-btn">Reply</button>
-                                                            <i className="bi bi-dot my-1"></i>
-                                                            <button className="btn action-btn">view 5 replies</button>
-                                                        </div>
-                                                        <div className="d-flex flex-start mt-4">
-                                                            <div className="me-3">
+                                                {
+                                                    comments.slice(0, commentAmount).map((comment) => {
+                                                        return (
+                                                            <div className="d-flex flex-start" key={comment.id}>
                                                                 <img
-                                                                    className="rounded-circle shadow-1-strong"
-                                                                    src="https://images.pexels.com/photos/771742/pexels-photo-771742.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                                                                    className="rounded-circle shadow-1-strong me-3"
+                                                                    src={comment.image}
                                                                     alt="avatar"
-                                                                    width={30}
-                                                                    height={30}
+                                                                    width={35}
+                                                                    height={35}
                                                                 />
-                                                            </div>
-                                                            <div className="flex-grow-1 flex-shrink-1">
-                                                                <div className="comment-body">
-                                                                    <div className="d-flex justify-content-between">
-                                                                        <p className="mb-1 user-name">
-                                                                            Billy
+                                                                <div className="flex-grow-1 flex-shrink-1">
+                                                                    <div className="comment-body">
+                                                                        <div className="d-flex justify-content-between">
+                                                                            <p className="mb-1 user-name">
+                                                                                {comment.owner}
+                                                                            </p>
+                                                                            <span className="small comment-text">{comment.time}</span>
+                                                                        </div>
+                                                                        <p className="small comment-text">
+                                                                            {comment.text}
                                                                         </p>
-                                                                        <span className="small comment-text">3hr</span>
                                                                     </div>
-                                                                    <p className="small mb-0 comment-text">
-                                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                                                        Eius quisquam recusandae eligendi dolore quod, et doloremque labore!
-                                                                        Adipisci quos perspiciatis debitis laborum eum! Incidunt, a voluptatum magnam possimus nam quam?
-                                                                    </p>
+                                                                    <div className="d-flex justify-content-start">
+                                                                        <button className="btn action-btn" onClick={() => {
+                                                                            updateData(comment.id, { like: comment.like + 1 })
+                                                                        }}>Like({comment.like})</button>
+                                                                        <i className="bi bi-dot my-1"></i>
+                                                                        <button className="btn action-btn">Reply</button>
+                                                                        <i className="bi bi-dot my-1"></i>
+                                                                        <button className="btn action-btn">view {numberOfReply} replies</button>
+                                                                    </div>
+                                                                    <Reply name={comment.owner} setNumberOfReply={setNumberOfReply} commentId={comment.commentId} />
                                                                 </div>
                                                             </div>
-                                                        </div>
-                                                        <div className="d-flex justify-content-start mx-5">
-                                                            <button className="btn action-btn">Like(3)</button>
-                                                            <i className="bi bi-dot my-1"></i>
-                                                            <button className="btn action-btn">Reply</button>
-                                                        </div>
-                                                        <div className="d-flex flex-start mt-4">
-                                                            <div className="me-3">
-                                                                <img
-                                                                    className="rounded-circle shadow-1-strong"
-                                                                    src="https://images.pexels.com/photos/1704488/pexels-photo-1704488.jpeg"
-                                                                    alt="avatar"
-                                                                    width={30}
-                                                                    height={30}
-                                                                />
-                                                            </div>
-                                                            <div className="flex-grow-1 flex-shrink-1">
-                                                                <div className="comment-body">
-                                                                    <div className="d-flex justify-content-between">
-                                                                        <p className="mb-1 user-name">
-                                                                            Suliman
-                                                                        </p>
-                                                                        <span className="small comment-text">4 hr</span>
-                                                                    </div>
-                                                                    <p className="small mb-0 comment-text">
-                                                                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quisquam recusandae
-                                                                        eligendi dolore quod, et doloremque labore! Adipisci quos perspiciatis
-                                                                        debitis laborum eum! Incidunt, a voluptatum magnam possimus nam quam?
-                                                                    </p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div className="d-flex justify-content-start mx-5">
-                                                            <button className="btn action-btn">Like(3)</button>
-                                                            <i className="bi bi-dot my-1"></i>
-                                                            <button className="btn action-btn">Reply</button>
-                                                        </div>
-                                                        <div className="d-flex justify-content-start">
-                                                            <button className="btn load-more">
-                                                                <i className="bi bi-three-dots three-dot"></i> Load more replies
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="d-flex flex-start">
-                                                    <img
-                                                        className="rounded-circle shadow-1-strong me-3"
-                                                        src="https://yt3.googleusercontent.com/05lhMeAH6tZrPIUsp2yHNz3DwzhKbDUQcxcY0_qeXVyZttR_pktBzw0FcLUSR6D4fVqsEgL3ZO0=s176-c-k-c0x00ffffff-no-rj"
-                                                        alt="avatar"
-                                                        width={30}
-                                                        height={30}
-                                                    />
-                                                    <div className="flex-grow-1 flex-shrink-1">
-                                                        <div className="comment-body">
-                                                            <div className="d-flex justify-content-between">
-                                                                <p className="mb-1 user-name">
-                                                                    Apple
-                                                                </p>
-                                                                <span className="small comment-text">2 hr</span>
-                                                            </div>
-                                                            <p className="small comment-text">
-                                                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius quisquam recusandae eligendi dolore quod,
-                                                                et doloremque labore! Adipisci quos perspiciatis debitis laborum eum! Incidunt, a
-                                                                voluptatum magnam possimus nam quam?
-                                                            </p>
-                                                        </div>
-                                                        <div className="d-flex justify-content-start">
-                                                            <button className="btn action-btn">Like(3)</button>
-                                                            <i className="bi bi-dot my-1"></i>
-                                                            <button className="btn action-btn">Reply</button>
-                                                            <i className="bi bi-dot my-1"></i>
-                                                            <button className="btn action-btn">view 5 replies</button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div className="d-flex justify-content-start">
-                                                    <button className="btn load-more">
-                                                        <i className="bi bi-three-dots three-dot"></i> Load more replies
-                                                    </button>
-                                                </div>
+                                                        )
+                                                    })
+                                                }
+                                                {
+                                                    showMore ? < div className="d-flex justify-content-start" >
+                                                        <button className="btn load-more" onClick={handelCommentAmount}>
+                                                            <i className="bi bi-three-dots three-dot"></i> Load more replies
+                                                        </button>
+                                                    </div> : <div className="d-flex justify-content-start">
+                                                        <button className="btn load-more" onClick={handelShowLess}>
+                                                            <i className="bi bi-three-dots three-dot"></i> Show less comment
+                                                        </button></div>
+                                                }
                                             </div>
                                         </div>
                                     </div>
@@ -170,10 +141,11 @@ const Comment = (props) => {
                             </div>
                         </div>
                     </div>
-                </section>
-            </div>
+                </section >
+            </div >
         )
     }
+
     return (
         <div>
         </div>

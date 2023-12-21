@@ -1,4 +1,4 @@
-.profile-header {
+/* .profile-header {
   position: relative;
   background-color: rgb(252, 252, 252);
   display: flex;
@@ -9,18 +9,7 @@
   overflow: hidden;
   width: 50%;
   margin: 0 auto;
-}
-
-
-.user-image {
-  height: 150px;
-  border-radius: 50%;
-  margin-top: -75px;
-  padding: 5px;
-  background: white;
-
-
-}
+} */
 
 .background-image {
   width: 100%;
@@ -58,9 +47,6 @@
 }
 
 .card-footer .nav {
-  width: 60%;
-  float: left;
-  list-style: none;
   padding: 0;
   margin: 0;
 }
@@ -105,6 +91,6 @@ a:hover {
   cursor: pointer;
 }
 
-.card-footer .nav li a.active{
+.card-footer .nav li a.active {
   color: blue;
 }
