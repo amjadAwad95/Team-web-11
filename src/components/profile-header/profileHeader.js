@@ -46,23 +46,23 @@ const ProfileHeader = () => {
                 <i className="bi bi-pencil-fill pe-1" /> {headerData.editButton}
               </button>
               <div className="dropdown">
-              <button
-                        className="icon-md btn btn-light"
-                        type="button"
-                        id="profileAction2"
-                        data-bs-toggle="dropdown"
-                        aria-expanded="false"
-                      >
-                        <i className="bi bi-three-dots" />
-                      </button>
-                      <ul
-                        className="dropdown-menu dropdown-menu-end"
-                        aria-labelledby="profileAction2"
-                      >
+                <button
+                  className="icon-md btn btn-light"
+                  type="button"
+                  id="profileAction2"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i className="bi bi-three-dots" />
+                </button>
+                <ul
+                  className="dropdown-menu dropdown-menu-end"
+                  aria-labelledby="profileAction2"
+                >
 
-                        <li><a className="dropdown-item" href="#"> <i class="bi bi-lock fa-fw pe-2"></i>{headerData.loackProfile}</a></li>
-                        <li> <a className="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>{headerData.settingsButton}</a></li>
-                      </ul>
+                  <li><a className="dropdown-item" href="#"> <i class="bi bi-lock fa-fw pe-2"></i>{headerData.loackProfile}</a></li>
+                  <li> <a className="dropdown-item" href="#"> <i class="bi bi-gear fa-fw pe-2"></i>{headerData.settingsButton}</a></li>
+                </ul>
               </div>
             </div>
           </div>
