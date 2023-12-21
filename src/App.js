@@ -6,6 +6,7 @@ import About from "./components/about/About";
 import Navbar from "./components/navbar/Navbar";
 import Photos from "./components/photosList/photos";
 import Experience from "./components/Experience/Experience";
+import AddPost from "./components/post/AddPost";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <div className="row my-3">
         <div className="col text-center">
           <ProfileHeader />
+          <AddPost/>
           <Posts />
         </div>
         <div className="col-md-4">
