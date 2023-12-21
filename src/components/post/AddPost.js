@@ -4,10 +4,13 @@ import { useFireBase } from "../../firebase/useFireBase";
 
 export default function AddPost() {
     const [post, setPost] = React.useState("");
-    const { addToData } = useFireBase("post");
+    const { data, addToData } = useFireBase("post");
 
     function handleSubmit(e) {
-        addToData(e, { postText: post })
+        addToData(e, {
+            postText: post, profileImage: "https://avatars.design/wp-content/uploads/2021/02/corporate-avatars-TN-1.jpg",
+            like: 0, name: "Sama Lanson", postId: data.length + 1, share: 0, time: "now"
+        })
         setPost("")
     }
 
