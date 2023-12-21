@@ -32,4 +32,6 @@ export const useFireBase = (collectionName) => {
         return () => unsubscribe()
     }, [collectionName])
     return { data, deleteData, addToData, updateData }
+
+
 }
