@@ -4,6 +4,7 @@ import { useFireBase } from "../../firebase/useFireBase";
 const Reply = (props) => {
     const { data, updateData, addToData } = useFireBase("reply");
     const [replyText, setReplyText] = useState("")
+    const [placeholder, setPlaceholder] = useState("Add reply...")
     const replys = data.filter((reply) => { return reply.commentId === props.commentId })
 
     const [replyObject, setReplyObject] = useState({
@@ -47,6 +48,7 @@ const Reply = (props) => {
         if (event.key === 'Enter') {
             addToData(event, replyObject)
             props.updateData(props.id, { numberReply: replys.length + 1 })
+            setPlaceholder("")
         }
     }
 
@@ -58,7 +60,10 @@ const Reply = (props) => {
                         rows={1}
                         cols={55}
                         placeholder="Add reply..."
+                        value={placeholder}
+                        onClick={() => setPlaceholder("")}
                         onChange={(e) => {
+                            setPlaceholder(e.target.value)
                             setReplyText(e.target.value)
                             setReplyObject({ ...replyObject, text: replyText })
                         }}

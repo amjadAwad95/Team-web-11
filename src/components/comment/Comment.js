@@ -60,6 +60,7 @@ const Comment = (props) => {
     const handelAddComment = (event) => {
         if (event.key === 'Enter') {
             addToData(event, commentObject)
+            setPlaceholder("")
         }
     }
 
@@ -86,8 +87,11 @@ const Comment = (props) => {
                                                         <textarea className="form-control text-area" id="exampleFormControlTextarea1"
                                                             rows={1}
                                                             cols={55}
-                                                            placeholder={placeholder}
+                                                            placeholder="Add a comment..."
+                                                            value={placeholder}
+                                                            onClick={() => setPlaceholder("")}
                                                             onChange={(e) => {
+                                                                setPlaceholder(e.target.value)
                                                                 setText(e.target.value)
                                                                 setCommentObject({ ...commentObject, text: text })
                                                             }}
