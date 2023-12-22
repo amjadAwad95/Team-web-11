@@ -6,21 +6,19 @@ import { useState } from "react";
 import { useFireBase } from '../../firebase/useFireBase';
 
 const FriendCard = () => {
-  const { data ,deleteData} = useFireBase("Friends")
+  const { data, deleteData } = useFireBase("Friends")
   const [visibleFriends, setVisibleFriends] = useState(4);
-  const [friends, setFriends] = useState([]);
-  const handleRemoveFriend = ( friendId) => 
-  {
+  const handleRemoveFriend = (friendId) => {
     // setFriends(friends.filter((data) => data.id !== friendId));
-   deleteData(friendId)
-  };  
+    deleteData(friendId)
+  };
   const seeMoreFriends = () => {
     setVisibleFriends((prevVisibleFriends) => prevVisibleFriends + 2);
   };
 
-   
-    
-  
+
+
+
   return (
     <div className="card p-3 my-4" style={{ width: "400px", height: "auto" }}>
       <div className="friend-list-header d-flex justify-content-between align-items-center m-1">
@@ -42,29 +40,29 @@ const FriendCard = () => {
                     <div className="col-2  m-3">
                       <div className={`friend-card ${info.hasStory ? info.hasStory : !info.hasStory}`}>
                         <div className="profile-picture-container   "  >
-                       {!info.hasStory && (
+                          {!info.hasStory && (
                             <div className="pic-con d-flex align-items-center ">
                               <img
-                              src={info.profilePicture}
-                              className=" "
-                              alt=""
-                              style={{ width: '70px', height: '70px', borderRadius: '50%', overflow:  '  hidden',margin:'-35px' }}
+                                src={info.profilePicture}
+                                className=" "
+                                alt=""
+                                style={{ width: '70px', height: '70px', borderRadius: '50%', overflow: '  hidden', margin: '-35px' }}
                               />
-                              </div>
-                              )} 
-                       {info.hasStory && (
-                              <div className="story-frame" style={{ width: '70px', height: '70px', borderRadius: '50%', overflow: 'hidden' }}>
+                            </div>
+                          )}
+                          {info.hasStory && (
+                            <div className="story-frame" style={{ width: '70px', height: '70px', borderRadius: '50%', overflow: 'hidden' }}>
                               <img
-                              src={info.profilePicture}
-                              className="img-fluid rounded-circle  "
-                              alt=""
-                              style={{ width: '100%', height: '100%', objectFit: 'cover'  }}
+                                src={info.profilePicture}
+                                className="img-fluid rounded-circle  "
+                                alt=""
+                                style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                               />
-                              </div>
-                              )}
-                        
-                          </div>
-                          
+                            </div>
+                          )}
+
+                        </div>
+
                         <div className="info-container ">
                           <div className="name ">{info.name}</div>
                           <div className="mutual-connections m-2">{info.mutualConnections} mutual connections</div>
@@ -95,7 +93,7 @@ const FriendCard = () => {
                                 <path d="M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4m.256 7a4.474 4.474 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10c.26 0 .507.009.74.025.226-.341.496-.65.804-.918C9.077 9.038 8.564 9 8 9c-5 0-6 3-6 4s1 1 1 1z" />
                                 <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m-.646-4.854.646.647.646-.647a.5.5 0 0 1 .708.708l-.647.646.647.646a.5.5 0 0 1-.708.708l-.646-.647-.646.647a.5.5 0 0 1-.708-.708l.647-.646-.647-.646a.5.5 0 0 1 .708-.708" />
                               </svg>
-                              
+
                             </button>
                           </div>
                         </div>

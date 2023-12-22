@@ -1,4 +1,3 @@
-import { collection, getFirestore, addDoc } from "firebase/firestore";
 import React from "react";
 import { useFireBase } from "../../firebase/useFireBase";
 
