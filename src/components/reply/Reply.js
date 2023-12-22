@@ -2,11 +2,28 @@ import { useEffect, useState } from "react";
 import { useFireBase } from "../../firebase/useFireBase";
 
 const Reply = (props) => {
-    const { data, updateData } = useFireBase("reply");
+    const { data, updateData, addToData } = useFireBase("reply");
+    const [replyText, setReplyText] = useState("")
     const replys = data.filter((reply) => { return reply.commentId === props.commentId })
+
+    const [replyObject, setReplyObject] = useState({
+        like: 0,
+        time: "0s",
+        image: props.profileImage,
+        owner: props.name,
+        forTo: props.name,
+        text: replyText,
+        commentId: props.commentId,
+        replyId: data.length + 1
+    })
+
     useEffect(() => {
-        props.setNumberOfReply(replys.length)
-    }, [replys.length])
+        const replyObjectUpdate = { ...replyObject }
+        replyObjectUpdate.replyId = data.length + 1
+        replyObjectUpdate.text = replyText
+        setReplyObject(replyObjectUpdate)
+    }, [replys.length, data, replyText])
+
     const [replyAmount, setReplyAmount] = useState(1);
     const [showMore, setShowMore] = useState(true)
     const handelReplyAmount = () => {
@@ -25,8 +42,30 @@ const Reply = (props) => {
         setShowMore(true)
         setReplyAmount(1);
     }
+
+    const handelAddReply = (event) => {
+        if (event.key === 'Enter') {
+            addToData(event, replyObject)
+            props.updateData(props.id, { numberReply: replys.length + 1 })
+        }
+    }
+
     return (
         <>
+            {
+                props.replyStatus ? <div className="mb-3">
+                    <textarea className="form-control text-area" id="exampleFormControlTextarea1"
+                        rows={1}
+                        cols={55}
+                        placeholder="Add reply..."
+                        onChange={(e) => {
+                            setReplyText(e.target.value)
+                            setReplyObject({ ...replyObject, text: replyText })
+                        }}
+                        onKeyDown={handelAddReply}
+                    ></textarea>
+                </div> : <div></div>
+            }
             {
                 replys.slice(0, replyAmount).map((rply) => {
                     return (

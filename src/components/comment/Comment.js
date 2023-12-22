@@ -8,6 +8,7 @@ const Comment = (props) => {
     const comments = data.filter((comment) => { return comment.postId === props.postId })
     const [text, setText] = useState("")
     const [placeholder, setPlaceholder] = useState("Add a comment...")
+    const [replyStatus, setReplyStatus] = useState(false);
     const [commentObject, setCommentObject] = useState({
         like: 0,
         time: "0s",
@@ -16,7 +17,8 @@ const Comment = (props) => {
         forTo: props.name,
         text: text,
         postId: props.postId,
-        commentId: data.length + 1
+        commentId: data.length + 1,
+        numberReply: 0
     })
     useEffect(() => {
         props.setNumberOfComment(comments.length)
@@ -28,7 +30,15 @@ const Comment = (props) => {
 
     const [commentAmount, setCommentAmount] = useState(1);
     const [showMore, setShowMore] = useState(true)
-    const [numberOfReply, setNumberOfReply] = useState(0);
+
+    const handelReplyStatus = () => {
+        if (!replyStatus) {
+            setReplyStatus(true);
+            return true;
+        }
+        setReplyStatus(false);
+        return true
+    }
 
     const handelCommentAmount = () => {
         if (commentAmount < comments.length) {
@@ -52,7 +62,6 @@ const Comment = (props) => {
             addToData(event, commentObject)
         }
     }
-
 
     if (props.isShow) {
         return (
@@ -114,11 +123,11 @@ const Comment = (props) => {
                                                                             updateData(comment.id, { like: comment.like + 1 })
                                                                         }}>Like({comment.like})</button>
                                                                         <i className="bi bi-dot my-1"></i>
-                                                                        <button className="btn action-btn">Reply</button>
+                                                                        <button className="btn action-btn" onClick={() => handelReplyStatus()}>Reply</button>
                                                                         <i className="bi bi-dot my-1"></i>
-                                                                        <button className="btn action-btn">view {numberOfReply} replies</button>
+                                                                        <button className="btn action-btn">view {comment.numberReply} replies</button>
                                                                     </div>
-                                                                    <Reply name={comment.owner} setNumberOfReply={setNumberOfReply} commentId={comment.commentId} />
+                                                                    <Reply name={comment.owner} profileImage={props.profileImage} commentId={comment.commentId} replyStatus={replyStatus} id={comment.id} updateData={updateData} />
                                                                 </div>
                                                             </div>
                                                         )
