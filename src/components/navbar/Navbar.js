@@ -253,7 +253,7 @@ export default function Navbar() {
                     width: "40px",
                     height: "40px",
                   }}
-                  src="https://avatars.design/wp-content/uploads/2021/02/corporate-avatars-TN-1.jpg"
+                  src="https://scontent.xx.fbcdn.net/v/t1.15752-9/393113137_1508104089938894_4270763439881804321_n.png?stp=dst-png_s206x206&_nc_cat=103&ccb=1-7&_nc_sid=510075&_nc_ohc=bhXraFJRJ8MAX9ELzPk&_nc_oc=AQmKX9ISuI05larIs1JwVZoMtnf4HwrYZuAUZWrENeRFrzFF3KLAPtZBiod9K3X9xC5PGj_chOSCEm4Auru-aNIX&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&oh=03_AdTnlCxIwX04T7r-M_kOlZLj0O4d7oxGPK6cRDXe-rV1wg&oe=65ABB306"
                   alt="avatar"
                 />
               </button>
