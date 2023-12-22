@@ -13,20 +13,13 @@ const FriendCard = () => {
   {
     // setFriends(friends.filter((data) => data.id !== friendId));
    deleteData(friendId)
-
-
   };  
-  
-
-  const seeMoreFriends = () =>
-  {
+  const seeMoreFriends = () => {
     setVisibleFriends((prevVisibleFriends) => prevVisibleFriends + 2);
   };
 
-  // if (!data) {
-
-  //   return <div>No data available</div>;
-  // }
+   
+    
   
   return (
     <div className="card p-3 my-4" style={{ width: "400px", height: "auto" }}>
@@ -47,21 +40,33 @@ const FriendCard = () => {
                 <div className="container mx-1">
                   <div className="row">
                     <div className="col-2  m-3">
-                      <div className={`friend-card ${info.hasStory ? 'has-story' : ''}`}>
-                        <div className="profile-picture-container me-3 "  >
-                        {info.hasStory && (
-                        <div className="story-frame" style={{ width: '70px', height: '70px', borderRadius: '50%', overflow: 'hidden' }}>
-                            <img
-                               src={info.profilePicture}
-                               className="img-fluid  rounded-circle"
-                               alt=""
-                               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                            />
-                        </div>
-                        )}
-                       </div>
+                      <div className={`friend-card ${info.hasStory ? info.hasStory : !info.hasStory}`}>
+                        <div className="profile-picture-container   "  >
+                       {!info.hasStory && (
+                            <div className="pic-con d-flex align-items-center ">
+                              <img
+                              src={info.profilePicture}
+                              className=" "
+                              alt=""
+                              style={{ width: '70px', height: '70px', borderRadius: '50%', overflow:  '  hidden',margin:'-35px' }}
+                              />
+                              </div>
+                              )} 
+                       {info.hasStory && (
+                              <div className="story-frame" style={{ width: '70px', height: '70px', borderRadius: '50%', overflow: 'hidden' }}>
+                              <img
+                              src={info.profilePicture}
+                              className="img-fluid rounded-circle  "
+                              alt=""
+                              style={{ width: '100%', height: '100%', objectFit: 'cover'  }}
+                              />
+                              </div>
+                              )}
+                        
+                          </div>
+                          
                         <div className="info-container ">
-                          <div className="name m-1">{info.name}</div>
+                          <div className="name ">{info.name}</div>
                           <div className="mutual-connections m-2">{info.mutualConnections} mutual connections</div>
                           <div className="buttons mt-1">
                             <button className="btn btn-primary ">
