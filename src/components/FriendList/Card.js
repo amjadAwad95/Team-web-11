@@ -2,26 +2,27 @@ import { useFireBase } from "../firebase/useFireBase"
 import FriendCard from "../friendcard/FriendCard"
 
 const Card = () => {
-    const { data } = useFireBase("friendcard")
+    const { data } = useFireBase("Friends")
     return (
         <>
-            {
-                data.map(info => {
-                    return (
-                        <div key={info.id}>
-                            <FriendCard profilePicture={info.profilePicture}
-                                name={info.name}
-                                mutualConnections={info.mutualConnections}
-                                hasStory={info.hasStory}
+           
+             
+                    
+                        <div >
+                            
+                            <FriendCard />
                                 
-                            />
+                            
                         </div>
-                    )
-
-                })
-            }
-        </>
+                     
+               
+            
+     </>
     )
 }
 
 export default Card;
+// profilePicture={info.profilePicture}
+// name={info.name}
+// mutualConnections={info.hasStory}
+// hasStory={info.hasStory}
