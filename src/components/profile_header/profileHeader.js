@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import "../profile-header/profileHeader.css"
+import "../profile_header/profileHeader.css"
 import { useFireBase } from "../../firebase/useFireBase";
 
 const ProfileHeader = () => {
