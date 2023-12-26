@@ -1,5 +1,5 @@
-import { useFireBase } from "../firebase/useFireBase"
-import Post from "./post/Post"
+import { useFireBase } from "../../firebase/useFireBase"
+import Post from "../post/Post"
 
 const Posts = () => {
     const { data } = useFireBase("post")

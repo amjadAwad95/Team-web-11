@@ -1,7 +1,7 @@
-import '../friendCardAction/FriendCardAction.css'
-import FriendCard from '../friendcard/FriendCard';
+import './FriendCardAction.css'
+import FriendCard from '../friend_card/FriendCard';
 //import Card from './components/FriendList/Card';
-import Posts from '../Posts';
+import Posts from '../posts/Posts';
 function FriendCardAction() {
   return (
 
