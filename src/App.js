@@ -5,7 +5,7 @@ import ProfileHeader from "./components/profile_header/profileHeader";
 import About from "./components/about/About";
 import Navbar from "./components/navbar/Navbar";
 import Photos from "./components/photos_list/photos";
-import Experience from "./components/experience/Experience";
+import Experience from "./components/Experience/Experience";
 import AddPost from "./components/post/AddPost";
 
 function App() {
