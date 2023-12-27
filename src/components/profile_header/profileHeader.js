@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-
 import "../profile_header/profileHeader.css"
 import { useFireBase } from "../../firebase/useFireBase";
+import ProfileNavLinks from "./profileButtons.js";
+
 
 const ProfileHeader = () => {
   const { data } = useFireBase("Header")
@@ -12,17 +13,16 @@ const ProfileHeader = () => {
       <div className="card" key={headerData.id}>
         <div
           className="background-image"
-          style={{ backgroundImage: `url(${headerData.coverPhotoUrl})`, backgroundRepeat: "no-repeat", backgroundSize: "cover" }}
+          style={{ backgroundImage: `url(${headerData.coverPhotoUrl})` }}
         ></div>
         <div className="card-body py-0">
           <div className="d-sm-flex align-items-start text-center text-sm-start">
             <div>
-              <div className="avatar avatar-xxl mt-n5 mb-3" style={{ marginTop: "-60px" }}>
+              <div className="avatar avatar-xxl mt-n5 mb-3" >
                 <img
                   className="avatar-img rounded-circle border border-white border-3"
                   src={headerData.profilePictureUrl}
                   alt=""
-                  style={{ width: "150px", height: "150px" }}
                 />
               </div>
             </div>
@@ -77,24 +77,11 @@ const ProfileHeader = () => {
           </ul>
         </div>
         <div className="card-footer mt-3 pt-2 pb-0 mx-3">
-          <ul className="nav nav-bottom-line align-items-center justify-content-center justify-content-md-start mb-0 border-0">
-            <li className="nav-item">
-              <a
-                className={`nav-link ${active === "Posts" ? "active" : "non-active"}`}
-                onClick={() => setActive("Posts")}
-              >
-                {headerData.postButton}
-              </a>
-            </li>
-            <li><a className={active == "About" ? "active" : "non-active"} onClick={() => { setActive("About") }}>{headerData.aboutButton}</a></li>
-
-            <li><a className={active == "Connections" ? "active" : "non-active"} onClick={() => { setActive("Connections") }}>{headerData.connectionButton}
-              <span className="connection-count">{headerData.connections}</span></a></li>
-            <li><a className={active == "Media" ? "active" : "non-active"} onClick={() => { setActive("Media") }}>{headerData.mediaButton}</a></li>
-            <li><a className={active == "Videos" ? "active" : "non-active"} onClick={() => { setActive("Videos") }}>{headerData.videosButton}</a></li>
-            <li><a className={active == "Events" ? "active" : "non-active"} onClick={() => { setActive("Events") }}>{headerData.eventButton}</a></li>
-            <li><a className={active == "Activity" ? "active" : "non-active"} onClick={() => { setActive("Activity") }}>{headerData.activitesButton}</a></li>
-          </ul>
+          <ProfileNavLinks
+            active={active}
+            setActive={setActive}
+            headerData={headerData}
+          />
         </div>
       </div>
     )

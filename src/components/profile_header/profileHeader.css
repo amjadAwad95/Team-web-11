@@ -94,3 +94,21 @@ a:hover {
 .card-footer .nav li a.active {
   color: blue;
 }
+
+
+.background-image {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
+
+.avatar {
+  margin-top: -60px;
+}
+
+.avatar-img {
+  width: 150px;
+  height: 150px;
+}
+
