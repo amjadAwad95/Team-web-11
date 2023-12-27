@@ -10,6 +10,16 @@
 
 }
 
+.container{
+  border-color: rgb(209, 199, 199);
+
+   .item{
+     border-color: rgb(223, 213, 213);
+
+   }
+
+}
+
 .story-frame {
   top: 0;
   left: 0;

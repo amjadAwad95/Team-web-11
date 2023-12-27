@@ -1,6 +1,6 @@
 import "./App.css";
 import Posts from "./components/Posts";
-import FriendCardAction from "./components/friendCardAction/FriendCardAction";
+import FriendCard from "./components/friendcard/FriendCard";
 import ProfileHeader from "./components/profile-header/profileHeader";
 import About from "./components/about/About";
 import Navbar from "./components/navbar/Navbar";
@@ -22,7 +22,7 @@ function App() {
           <About />
           <Experience />
           <Photos />
-          <FriendCardAction />
+          <FriendCard />
         </div>
       </div>
     </div>

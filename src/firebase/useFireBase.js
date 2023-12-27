@@ -8,11 +8,13 @@ export const useFireBase = (collectionName) => {
         const ref = doc(db, collectionName, id);
         await deleteDoc(ref);
     }
-    const updateData = async (id, newObject) => {
-        const ref = doc(db, collectionName, id);
+    const updateData = async (id, newObject) =>
+     {
+        const ref = doc(db, collectionName, id); 
         await updateDoc(ref, newObject)
     }
-    const addToData = async (e, object) => {
+    const addToData = async (e, object) =>
+     {
         e.preventDefault()
         try {
             await addDoc(collection(db, collectionName), object);

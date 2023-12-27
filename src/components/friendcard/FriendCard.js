@@ -1,4 +1,3 @@
-
 import React from 'react';
 import './FriendCard.css';
 import { Row, Col } from 'react-bootstrap';
@@ -6,23 +5,15 @@ import { useState } from "react";
 import { useFireBase } from '../../firebase/useFireBase';
 
 const FriendCard = () => {
-  const { data ,deleteData} = useFireBase("Friends")
+  const { data ,deleteData} = useFireBase("Friends");
   const [visibleFriends, setVisibleFriends] = useState(4);
-  const [friends, setFriends] = useState([]);
-  const handleRemoveFriend = ( friendId) => 
-  {
-    // setFriends(friends.filter((data) => data.id !== friendId));
-   deleteData(friendId)
-  };  
+  const handleRemoveFriend = ( friendId) => {
+    deleteData(friendId) };  
   const seeMoreFriends = () => {
-    setVisibleFriends((prevVisibleFriends) => prevVisibleFriends + 2);
-  };
+    setVisibleFriends((visibleFriends) => visibleFriends + 2); };
 
-   
-    
-  
   return (
-    <div className="card p-3 my-4" style={{ width: "400px", height: "auto" }}>
+    <div className="card p-3 my-4 m-2" style={{ width: "400px", height: "auto" }}>
       <div className="friend-list-header d-flex justify-content-between align-items-center m-1">
         <div className="d-flex align-items-center  mx-1" style={{ fontSize: '14px' }}>
           <h4 style={{ fontSize: '20px' }}>Friends</h4>
@@ -42,7 +33,7 @@ const FriendCard = () => {
                     <div className="col-2  m-3">
                       <div className={`friend-card ${info.hasStory ? info.hasStory : !info.hasStory}`}>
                         <div className="profile-picture-container   "  >
-                       {!info.hasStory && (
+                          {!info.hasStory && (
                             <div className="pic-con d-flex align-items-center ">
                               <img
                               src={info.profilePicture}
@@ -52,7 +43,7 @@ const FriendCard = () => {
                               />
                               </div>
                               )} 
-                       {info.hasStory && (
+                              {info.hasStory && (
                               <div className="story-frame" style={{ width: '70px', height: '70px', borderRadius: '50%', overflow: 'hidden' }}>
                               <img
                               src={info.profilePicture}
@@ -65,7 +56,7 @@ const FriendCard = () => {
                         
                           </div>
                           
-                        <div className="info-container ">
+                          <div className="info-container ">
                           <div className="name ">{info.name}</div>
                           <div className="mutual-connections m-2">{info.mutualConnections} mutual connections</div>
                           <div className="buttons mt-1">
@@ -109,9 +100,12 @@ const FriendCard = () => {
         ))}
       </Row>
     </div>
-  );
+  
+
+  )
+ 
+
 };
 
 export default FriendCard;
-
 
